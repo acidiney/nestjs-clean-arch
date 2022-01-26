@@ -11,6 +11,7 @@ async function bootstrap() {
     const app = await NestFactory.create<NestExpressApplication>(MainModule, {
       cors: true,
     });
+
     const environmentService = app.get(EnvironmentService);
 
     await buildApiDocumentation(app, environmentService);

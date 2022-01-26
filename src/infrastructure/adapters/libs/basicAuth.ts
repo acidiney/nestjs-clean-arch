@@ -1,15 +1,15 @@
-import * as expressBasicAuth from "express-basic-auth";
+import * as expressBasicAuth from 'express-basic-auth';
 
 interface BasicAuthInterface {
-  username: string,
-  password: string,
+  username: string;
+  password: string;
 }
 
 export const basicAuth = (auth: BasicAuthInterface) => {
   return expressBasicAuth({
     users: {
-      [auth.username]: auth.password
+      [auth.username]: auth.password,
     },
     challenge: true,
-  })
-}
+  });
+};

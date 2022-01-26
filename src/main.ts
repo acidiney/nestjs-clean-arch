@@ -5,6 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { MainModule } from './main.module';
 import { buildApiDocumentation } from '#infra/common/documentation';
 import { EnvironmentService } from '#infra/configs/environment/environment.service';
+import { ResponseInterceptor } from '#infra/common/interceptors/response.interceptor';
 
 async function bootstrap() {
   try {
@@ -12,6 +13,7 @@ async function bootstrap() {
       cors: true,
     });
 
+    app.useGlobalInterceptors(new ResponseInterceptor());
     const environmentService = app.get(EnvironmentService);
 
     await buildApiDocumentation(app, environmentService);

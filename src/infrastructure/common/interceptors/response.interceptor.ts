@@ -5,7 +5,7 @@ import {
   CallHandler,
 } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export class ResponseFormat<T> {
@@ -30,9 +30,14 @@ export class ResponseInterceptor<T>
     return next.handle().pipe(
       map((data) => ({
         message: data.message,
-        data: data.object,
         duration: `${Date.now() - now}ms`,
+        data: data.object,
       })),
+      tap(() => {
+        const response = context.switchToHttp().getResponse();
+        const duration = Date.now() - now;
+        response.set('X-Response-Time', `${duration}ms`);
+      }),
     );
   }
 }

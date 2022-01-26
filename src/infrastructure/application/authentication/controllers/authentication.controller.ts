@@ -1,7 +1,8 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { ApiExtraModels, ApiTags } from '@nestjs/swagger';
 import { LoginModel } from '#infra/application/authentication/presenters/swagger/login.model';
 import { ApiResponseType } from '#infra/common/documentation/response.swagger';
+import { LoginDto } from '#infra/application/authentication/dto/login.dto';
 
 @Controller('auth')
 @ApiTags('Authentication')
@@ -9,9 +10,10 @@ import { ApiResponseType } from '#infra/common/documentation/response.swagger';
 export class AuthenticationController {
   @Post('login')
   @ApiResponseType(LoginModel)
-  async login() {
+  async login(@Body() loginDto: LoginDto) {
     return {
       message: 'Hello World',
+      object: loginDto,
     };
   }
 

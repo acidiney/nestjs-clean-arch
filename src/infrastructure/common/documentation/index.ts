@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { basicAuth } from '#infra/adapters/libs/basicAuth';
 import { Logger } from '@nestjs/common';
 import { EnvironmentService } from '#infra/configs/environment/environment.service';
+import { ResponseFormat } from '#infra/common/interceptors/response.interceptor';
 
 export function buildApiDocumentation(
   app: NestExpressApplication,
@@ -22,7 +23,10 @@ export function buildApiDocumentation(
     .setVersion(`v${appVersion}`)
     .build();
 
-  const document = SwaggerModule.createDocument(app, options);
+  const document = SwaggerModule.createDocument(app, options, {
+    extraModels: [ResponseFormat],
+    deepScanRoutes: true,
+  });
 
   app.use(
     '/docs',

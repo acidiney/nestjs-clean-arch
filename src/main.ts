@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { MainModule } from './main.module';
-import { buildApiDocumentation } from '#infra/configs/documentation';
+import { buildApiDocumentation } from '#infra/common/documentation';
 import { EnvironmentService } from '#infra/configs/environment/environment.service';
 
 async function bootstrap() {

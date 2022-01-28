@@ -29,9 +29,9 @@ export class ResponseInterceptor<T>
 
     return next.handle().pipe(
       map((data) => ({
-        message: data.message,
+        message: 'Operation success',
         duration: `${Date.now() - now}ms`,
-        data: data.object,
+        data: data,
       })),
       tap(() => {
         const response = context.switchToHttp().getResponse();

@@ -18,8 +18,18 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "#core/*": ["src/core/*"],
-      "#infra/*": ["src/infrastructure/*"]
+      "#modules/*": [
+        "src/modules/*"
+      ],
+      "#core/*": [
+        "src/core/*"
+      ],
+      "#domain/*": [
+        "src/domain/*"
+      ],
+      "#infra/*": [
+        "src/infrastructure/*"
+      ]
     }
   }
 }

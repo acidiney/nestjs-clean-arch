@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BaseRepository } from '#infra/configs/database/prisma/base.repository';
+import { CurrentBaseRepository } from '#infra/configs/database/current-base-repository';
 
 @Injectable()
-export class UsersRepository extends BaseRepository {}
+export class UsersRepository extends CurrentBaseRepository {}

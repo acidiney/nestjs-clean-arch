@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from '#infra/configs/database/database.module';
 import { EnvironmentModule } from '#infra/configs/environment/environment.module';
 import { AuthenticationStrategyModule } from '#infra/configs/authentication-strategy/authentication-strategy.module';
-import { GraphqlModule } from '#infra/configs/interfaces/graphql/graphql.module';
 import { RestModule } from '#infra/configs/interfaces/rest/rest.module';
 import { CustomCacheModule } from '#infra/configs/cache/cache.module';
 
@@ -11,7 +10,6 @@ import { CustomCacheModule } from '#infra/configs/cache/cache.module';
   imports: [
     EnvironmentModule,
     DatabaseModule,
-    GraphqlModule,
     RestModule,
     CustomCacheModule,
     AuthenticationStrategyModule,

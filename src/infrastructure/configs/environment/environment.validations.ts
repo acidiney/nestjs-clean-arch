@@ -2,11 +2,11 @@ import { plainToClass } from 'class-transformer';
 
 import {
   IsBoolean,
-  IsEnum,
-  IsNumber,
+  IsEnum, IsNumber,
+  IsNumberString,
   IsString,
-  validateSync,
-} from 'class-validator';
+  validateSync
+} from "class-validator";
 
 import { Environment } from '#infra/configs/environment/enums/enviromnent.enum';
 import { SupportedDriversEnum } from '#infra/configs/environment/enums/supported-drivers.enum';

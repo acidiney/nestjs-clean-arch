@@ -6,7 +6,11 @@ import { useContext } from '#infra/common/useContext';
 })
 export class RestModule {
   static async registerAsync(): Promise<DynamicModule> {
-    const registeredModules = useContext('../../modules', true, /\.module.js$/);
+    const registeredModules = useContext(
+      '../../modules',
+      true,
+      /\.module.(js|ts)$/,
+    );
 
     const applicationModules = [];
 

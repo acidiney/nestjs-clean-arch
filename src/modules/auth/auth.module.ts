@@ -3,8 +3,10 @@ import { AuthHttp } from '#modules/auth/interfaces/http/auth.http';
 import { UsersRepository } from '#modules/auth/infra/repositories/users.repository';
 import { LoginUseCase } from '#modules/auth/use-cases/login.use-case';
 import { PrismaService } from '#infra/configs/database/prisma/prisma.service';
+import { PrismaModule } from '#infra/configs/database/prisma/prisma.module';
 
 @Module({
+  imports: [PrismaModule],
   controllers: [AuthHttp],
   providers: [
     LoginUseCase,
@@ -17,4 +19,4 @@ import { PrismaService } from '#infra/configs/database/prisma/prisma.service';
     },
   ],
 })
-export default class UserModule {}
+export default class AuthModule {}

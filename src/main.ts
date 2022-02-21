@@ -18,8 +18,10 @@ async function bootstrap() {
 
     await buildApiDocumentation(app, environmentService);
 
-    const $host = environmentService.getApplicationHost();
-    const $port = environmentService.getApplicationPort();
+    const $host =
+      environmentService.getApplicationHost() || process.env.API_HOST;
+    const $port =
+      environmentService.getApplicationPort() || process.env.API_PORT;
 
     await app.listen($port, $host);
   } catch (error) {

@@ -1,6 +1,11 @@
-import { BaseRepository } from '#infra/configs/database/prisma/base.repository';
 import { IRepository } from '#modules/auth/domain/reposity-interface';
 
-export class CurrentBaseRepository
-  extends BaseRepository
-  implements IRepository {}
+export class CurrentBaseRepository implements IRepository {
+  findAll(): Promise<any[]> {
+    return Promise.resolve([]);
+  }
+
+  findById(id: string): Promise<any> {
+    return Promise.resolve(undefined);
+  }
+}
